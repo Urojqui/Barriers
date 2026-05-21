@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barreras contra inundaciones — Protección frente a inundaciones</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .barrier-row {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid var(--gray-200);
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    .barrier-row-label {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      margin-bottom: .5rem;
+    }
+    .barrier-row-fields {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .barrier-row-fields .inp-group {
+      flex: 1;
+      min-width: 0;
+    }
+    .remove-btn {
+      background: #fee2e2;
+      color: #ef4444;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1rem;
+      flex-shrink: 0;
+      align-self: center;
+      margin-top: 1.4rem;
+      line-height: 1;
+    }
+    .add-barrier-btn {
+      display: block;
+      width: 100%;
+      border: 2px dashed var(--gray-200);
+      background: transparent;
+      color: var(--gray-600);
+      padding: .75rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-weight: 600;
+      font-family: inherit;
+      font-size: .9rem;
+      transition: border-color .2s, color .2s;
+      margin-bottom: 1.5rem;
+    }
+    .add-barrier-btn:hover {
+      border-color: var(--yellow);
+      color: var(--navy);
+    }
+    .calc-divider {
+      height: 1px;
+      background: rgba(255,255,255,.12);
+      margin: .4rem 0 .6rem;
+    }
+    .barrier-summary-row {
+      font-size: .85rem;
+      padding: .2rem 0;
+    }
+  </style>
+
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">BCI<span>.</span></a>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#product"    onclick="closeNav()">Producto</a></li>
+    <li><a href="#benefits"   onclick="closeNav()">Beneficios</a></li>
+    <li><a href="#measure"    onclick="closeNav()">Medición</a></li>
+    <li><a href="#calculator" onclick="closeNav()">Presupuesto</a></li>
+    <li><a href="#footer"     onclick="closeNav()" class="nav-cta">Contacto</a></li>
+  </ul>
+
+  <button class="nav-burger" id="navBurger" aria-label="Menú" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 · HERO
+══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-water">
+    <div class="hw hw1"></div>
+    <div class="hw hw2"></div>
+    <div class="hw hw3"></div>
+  </div>
+  <div class="hero-vignette"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Protección certificada · Normativa EU
+    </div>
+
+    <h1 class="hero-title">
+      La primera línea de<br>
+      <span class="hl">defensa</span> contra<br>
+      las inundaciones
+    </h1>
+
+    <p class="hero-sub">
+      Barreras de aluminio marino diseñadas a medida para hogares y negocios.
+      Instalación en minutos, protección duradera.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="#calculator" class="btn btn-primary">
+        Calcular presupuesto
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+          <path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="#product" class="btn btn-ghost">Ver el producto</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">120cm</div>
+      <div class="hero-stat-lbl">Altura máxima</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">5 min</div>
+      <div class="hero-stat-lbl">Instalación</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">100%</div>
+      <div class="hero-stat-lbl">Aluminio marino</div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" onclick="scrollTo({top:document.getElementById('product').offsetTop,behavior:'smooth'})">
+    <span class="scroll-cue-lbl">Scroll</span>
+    <div class="scroll-cue-arrow"></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 · PRODUCT REVEAL
+══════════════════════════════════════════ -->
+<section id="product">
+  <div class="product-sticky" id="productSticky">
+    <!-- Photo background layer (fades in via JS) -->
+    <div id="housePhoto" style="position:absolute;inset:0;background:url('src/images/casa.jpeg') center/cover no-repeat;opacity:0;z-index:0;"></div>
+    <!-- Dark overlay so barrier stands out -->
+    <div style="position:absolute;inset:0;background:rgba(0,0,0,0.35);z-index:1;pointer-events:none;"></div>
+
+    <div class="product-header anim" id="productHeader">
+      <span class="section-label">El producto</span>
+      <h2>Ingeniería que detiene el agua</h2>
+    </div>
+
+    <div class="barrier-scene" style="min-height:340px;">
+      <!-- Perspective wrapper anchored to bottom of scene -->
+      <div style="transform:perspective(900px) rotateX(2deg);transform-origin:bottom center;position:absolute;left:24%;bottom:0;width:52%;">
+        <div id="barrierSvgWrap"></div>
+      </div>
+
+      <div class="asm-dots" id="asmDots">
+        <!-- dots injected by JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 · BENEFITS
+══════════════════════════════════════════ -->
+<section id="benefits">
+  <div class="benefits-inner">
+    <div class="section-head anim">
+      <span class="section-label" style="color:var(--navy)">¿Para qué sirven?</span>
+      <h2>Todo lo que necesitas</h2>
+      <p>Diseñadas para ofrecer la máxima protección con la mínima complejidad.</p>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="b-card" data-delay="0">
+        <span class="b-icon">🏠</span>
+        <h3 class="b-title">Protege hogares y negocios</h3>
+        <p class="b-desc">Para puertas, garajes y vanos de cualquier tamaño. Solución permanente que no altera la estética del inmueble.</p>
+      </div>
+      <div class="b-card" data-delay="1">
+        <span class="b-icon">⚡</span>
+        <h3 class="b-title">Instalación en minutos</h3>
+        <p class="b-desc">Sin herramientas especiales. Desliza las tablas en las guías y tu barrera estará lista antes de que llegue el agua.</p>
+      </div>
+      <div class="b-card" data-delay="2">
+        <span class="b-icon">🔩</span>
+        <h3 class="b-title">Aluminio marino anticorrosión</h3>
+        <p class="b-desc">Aleación 6005-T5 anodizada. Resiste el agua salada, agentes químicos y décadas de uso sin degradarse.</p>
+      </div>
+      <div class="b-card" data-delay="3">
+        <span class="b-icon">📐</span>
+        <h3 class="b-title">Fabricadas a medida</h3>
+        <p class="b-desc">Cada barrera se fabrica con las dimensiones exactas de tu vano. Ajuste perfecto, cero improvisación.</p>
+      </div>
+      <div class="b-card" data-delay="4">
+        <span class="b-icon">🌊</span>
+        <h3 class="b-title">Hasta 120 cm de altura</h3>
+        <p class="b-desc">Configura múltiples tablas para alcanzar la altura necesaria según la realidad de cada zona de riesgo.</p>
+      </div>
+      <div class="b-card" data-delay="5">
+        <span class="b-icon">✅</span>
+        <h3 class="b-title">Certificadas normativa europea</h3>
+        <p class="b-desc">Cumplimiento total con BS EN 13564. Ensayadas bajo condiciones de inundación real para garantizar su eficacia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 · HOW TO MEASURE
+══════════════════════════════════════════ -->
+<section id="measure">
+  <div class="measure-inner">
+    <div class="section-head anim" style="--clr:#fff">
+      <span class="section-label">Antes de pedir</span>
+      <h2 style="color:#fff">¿Cómo medir?</h2>
+      <p style="color:var(--text-muted)">El método correcto depende del tipo de montaje que necesitas.</p>
+    </div>
+
+    <div class="measure-cards">
+      <!-- Inside mount -->
+      <div class="m-card" id="mCardA">
+        <div class="m-card-title">Montaje interior <em style="color:var(--yellow);font-style:normal">(A)</em></div>
+        <div class="m-card-subtitle">Mide entre las paredes interiores del vano</div>
+
+        <svg class="m-diagram" viewBox="0 0 280 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left wall -->
+          <rect x="14" y="18" width="42" height="164" fill="#334155" rx="3"/>
+          <!-- Right wall -->
+          <rect x="224" y="18" width="42" height="164" fill="#334155" rx="3"/>
+          <!-- Floor -->
+          <rect x="14" y="172" width="252" height="10" fill="#475569"/>
+          <!-- Opening fill -->
+          <rect x="56" y="18" width="168" height="154" fill="rgba(59,130,246,.08)"/>
+          <!-- Rails (silver) -->
+          <rect x="54" y="26" width="14" height="146" fill="url(#rg_a)" rx="2"/>
+          <rect x="212" y="26" width="14" height="146" fill="url(#rg_a)" rx="2"/>
+          <!-- Groove on rails -->
+          <rect x="63" y="26" width="5" height="146" fill="rgba(0,0,0,.25)"/>
+          <rect x="212" y="26" width="5" height="146" fill="rgba(0,0,0,.25)"/>
+          <!-- Dimension line -->
+          <line x1="68" y1="105" x2="212" y2="105" stroke="#f5c518" stroke-width="1.4" stroke-dasharray="5,3"/>
+          <polygon points="68,101 58,105 68,109" fill="#f5c518"/>
+          <polygon points="212,101 222,105 212,109" fill="#f5c518"/>
+          <!-- Label -->
+          <text x="140" y="98" fill="#f5c518" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">Medida A</text>
+          <text x="140" y="152" fill="rgba(255,255,255,.35)" font-size="9.5" text-anchor="middle" font-family="Inter,sans-serif">Hueco libre interior</text>
+          <defs>
+            <linearGradient id="rg_a" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="#9ca3af"/>
+              <stop offset="40%" stop-color="#e5e7eb"/>
+              <stop offset="100%" stop-color="#9ca3af"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <p class="m-card-note">Mide el espacio libre entre las paredes interiores. Las guías se montan dentro sin sobresalir hacia el exterior.</p>
+      </div>
+
+      <!-- Outside mount -->
+      <div class="m-card" id="mCardB">
+        <div class="m-card-title">Montaje exterior <em style="color:var(--yellow);font-style:normal">(B)</em></div>
+        <div class="m-card-subtitle">Hueco interior +10 cm a cada lado</div>
+
+        <svg class="m-diagram" viewBox="0 0 280 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left wall -->
+          <rect x="36" y="28" width="32" height="144" fill="#334155" rx="3"/>
+          <!-- Right wall -->
+          <rect x="212" y="28" width="32" height="144" fill="#334155" rx="3"/>
+          <!-- Floor -->
+          <rect x="8" y="166" width="264" height="10" fill="#475569"/>
+          <!-- Opening fill -->
+          <rect x="68" y="28" width="144" height="144" fill="rgba(59,130,246,.08)"/>
+          <!-- Rails mounted outside walls -->
+          <rect x="10" y="34" width="14" height="132" fill="url(#rg_b)" rx="2"/>
+          <rect x="256" y="34" width="14" height="132" fill="url(#rg_b)" rx="2"/>
+          <!-- Inner opening dashes -->
+          <line x1="68" y1="88" x2="212" y2="88" stroke="rgba(255,255,255,.2)" stroke-width="1" stroke-dasharray="3,3"/>
+          <text x="140" y="84" fill="rgba(255,255,255,.3)" font-size="9" text-anchor="middle" font-family="Inter,sans-serif">hueco</text>
+          <!-- Outer dimension line -->
+          <line x1="17" y1="108" x2="263" y2="108" stroke="#f5c518" stroke-width="1.4" stroke-dasharray="5,3"/>
+          <polygon points="17,104 7,108 17,112"  fill="#f5c518"/>
+          <polygon points="263,104 273,108 263,112" fill="#f5c518"/>
+          <text x="140" y="121" fill="#f5c518" font-size="12" font-weight="700" text-anchor="middle" font-family="Inter,sans-serif">Medida B</text>
+          <!-- +10cm badges -->
+          <rect x="2"   y="133" width="28" height="16" rx="3" fill="rgba(245,197,24,.15)"/>
+          <text x="16"  y="144" fill="#f5c518" font-size="8.5" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">+10cm</text>
+          <rect x="250" y="133" width="28" height="16" rx="3" fill="rgba(245,197,24,.15)"/>
+          <text x="264" y="144" fill="#f5c518" font-size="8.5" text-anchor="middle" font-weight="700" font-family="Inter,sans-serif">+10cm</text>
+          <defs>
+            <linearGradient id="rg_b" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%"  stop-color="#9ca3af"/>
+              <stop offset="40%" stop-color="#e5e7eb"/>
+              <stop offset="100%" stop-color="#9ca3af"/>
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <p class="m-card-note">Mide el hueco interior y suma 10 cm a cada lado. Las guías se anclan en la fachada cubriendo el vano completamente.</p>
+      </div>
+    </div>
+
+    <!-- Steps -->
+    <div class="steps-wrap">
+      <h3 class="steps-title">Guía paso a paso</h3>
+
+      <div class="step" data-delay="0">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <h4>Elige el tipo de montaje</h4>
+          <p>Decide si las guías irán dentro del vano (A) o ancladas en la fachada exterior (B) según el acabado que quieras.</p>
+        </div>
+      </div>
+      <div class="step" data-delay="1">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <h4>Mide la anchura</h4>
+          <p>Con cinta métrica, mide de pared a pared en el punto más estrecho del vano. Anota en centímetros.</p>
+        </div>
+      </div>
+      <div class="step" data-delay="2">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <h4>Determina la altura necesaria</h4>
+          <p>Consulta históricos de inundaciones en tu zona. Añade un 10% de margen sobre el nivel máximo registrado.</p>
+        </div>
+      </div>
+      <div class="step" data-delay="3">
+        <div class="step-num">4</div>
+        <div class="step-text">
+          <h4>Redondea a múltiplos de 20 cm</h4>
+          <p>Nuestras tablas son de 20 cm de alto. Redondea siempre al múltiplo superior para garantizar la máxima protección.</p>
+        </div>
+      </div>
+      <div class="step" data-delay="4">
+        <div class="step-num">5</div>
+        <div class="step-text">
+          <h4>Usa la calculadora de presupuesto</h4>
+          <p>Obtén un precio orientativo al instante y contacta con nosotros para un presupuesto oficial con visita técnica incluida.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 · CALCULATOR
+══════════════════════════════════════════ -->
+<section id="calculator">
+  <div class="calc-inner">
+    <div class="section-head anim">
+      <span class="section-label" style="color:var(--navy)">Calcula tu presupuesto</span>
+      <h2>¿Cuánto cuesta proteger tu espacio?</h2>
+      <p>Introduce las medidas y obtén un precio orientativo al instante.</p>
+    </div>
+
+    <div class="calc-card" id="calcCard">
+      <div id="barrierRows"></div>
+
+      <button type="button" id="addBarrierBtn" class="add-barrier-btn">+ Añadir barrera</button>
+
+      <div class="calc-result">
+        <div id="barrierSummaries"></div>
+        <div class="calc-divider" id="calcDivider" style="display:none"></div>
+        <div class="res-row">
+          <span class="res-lbl">Precio base</span>
+          <span class="res-val" id="rBase">—</span>
+        </div>
+        <div class="res-row">
+          <span class="res-lbl">IVA (21%)</span>
+          <span class="res-val" id="rIva">—</span>
+        </div>
+        <div class="price-block">
+          <div class="price-lbl">Total con IVA</div>
+          <div class="price-amt" id="rPrice">—</div>
+        </div>
+      </div>
+
+      <p class="calc-note">
+        * Precio orientativo, puede variar según las características y destino final de la instalación. Solicita tu presupuesto oficial sin compromiso.
+      </p>
+
+      <div class="calc-cta">
+        <a href="mailto:info@upstore2022.com?subject=Solicitud%20de%20presupuesto"
+           id="calcCta"
+           class="btn btn-primary"
+           style="font-size:1rem;padding:.95rem 2.3rem">
+          Solicitar presupuesto oficial
+          <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+            <path d="M3 7.5h9M9 4l3.5 3.5L9 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 · FOOTER
+══════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">BCI<span>.</span></div>
+        <p>Fabricantes de barreras contra inundaciones de aluminio marino. Soluciones a medida para hogares y empresas en toda España y Europa.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Producto</h4>
+        <ul>
+          <li><a href="#product">Cómo funciona</a></li>
+          <li><a href="#benefits">Beneficios</a></li>
+          <li><a href="#measure">Cómo medir</a></li>
+          <li><a href="#calculator">Presupuesto</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="#">Sobre nosotros</a></li>
+          <li><a href="#">Instaladores</a></li>
+          <li><a href="#">Certificaciones</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:info@upstore2022.com">info@upstore2022.com</a></li>
+          <li><a href="tel:+34900000000">+34 900 000 000</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-tagline">Protección cuando <em>más la necesitas.</em></div>
+      <div class="footer-copy">© 2025 Barreras contra inundaciones. Todos los derechos reservados.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script src="app.js"></script>
+</body>
+</html>
