@@ -827,13 +827,28 @@ body {
 @media (max-width: 480px) {
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
-  #hero { justify-content: flex-start; padding-top: 5rem; }
+  #hero { justify-content: center; padding-top: 5rem; }
   .hero-content { padding: 0 1.25rem; padding-top: 1.5rem; }
 
   .price-amt { font-size: 1.85rem; letter-spacing: -.02em; }
   .hero-title { font-size: clamp(1.5rem, 7.5vw, 1.9rem); }
-  .hero-stats { bottom: 6.5rem; gap: 1rem; }
+  .hero-stats {
+    position: relative;
+    bottom: auto;
+    margin-top: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   .hero-stat-val { font-size: 1.2rem; }
+  .scroll-cue {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 1.5rem auto 0;
+  }
+
   #calculator { padding: 5rem 1rem; }
   #benefits { padding: 5rem 1rem; }
   #measure { padding: 5rem 1rem; }
