@@ -805,7 +805,7 @@ body {
   .hero-stats { bottom: 4rem; gap: 1.5rem; padding: 0 1rem; flex-wrap: wrap; justify-content: center; }
   .hero-stat-val { font-size: 1.4rem; }
   .hero-stat-lbl { font-size: .65rem; }
-  .scroll-cue { bottom: 1.2rem; }
+  .scroll-cue { bottom: 1.2rem; left: auto;}
 
 
   .price-amt { font-size: 2.2rem; }
@@ -840,13 +840,7 @@ body {
     justify-content: center;
   }
   .hero-stat-val { font-size: 1.2rem; }
-  .scroll-cue {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    margin: 1.5rem auto 0;
-  }
+  .scroll-cue { bottom: 1.2 rem; left: auto; }
 
   #calculator { padding: 5rem 1rem; }
   #benefits { padding: 5rem 1rem; }
