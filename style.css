@@ -343,6 +343,8 @@ body {
   color: rgba(255,255,255,.45);
   margin-top: .2rem;
   letter-spacing: .04em;
+  display: flex;
+  justify-content: center;
 }
 
 /* Scroll indicator */
@@ -558,7 +560,8 @@ body {
 .m-card-title    { font-size: 1.45rem; font-weight: 700; color: #fff; margin-bottom: .35rem; }
 .m-card-subtitle { font-size: .85rem; color: var(--yellow); font-weight: 500; margin-bottom: 1.6rem; }
 .m-diagram       { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
-.m-card-note     { font-size: .87rem; color: rgba(255,255,255,.58); line-height: 1.65; margin-top: 1.4rem; }
+.m-card-note     { font-size: .87rem; color: rgba(255,255,255,.58); line-height: 1.65; margin-top: 0.2rem; }
+.m-card-note2    { font-size: .87rem; color: rgba(255,255,255,.58); line-height: 1.65; margin-top: .4rem; font-weight: bold; }
 
 /* Steps */
 .steps-wrap { max-width: 700px; margin: 0 auto; }
