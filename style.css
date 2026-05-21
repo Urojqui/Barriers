@@ -795,7 +795,6 @@ body {
 
   .calc-card { padding: 2rem 1.5rem 1.8rem; }
 
-  /* Problem 1 — Hero */
   .hero-title { font-size: clamp(1.8rem, 8vw, 2.6rem); line-height: 1.1; margin-bottom: 1rem; }
   .hero-sub { font-size: .92rem; margin-bottom: 2rem; }
   .hero-badge { font-size: .7rem; margin-bottom: 1.2rem; }
@@ -808,7 +807,7 @@ body {
   .hero-stat-lbl { font-size: .65rem; }
   .scroll-cue { bottom: 1.2rem; }
 
-  /* Problem 2 — Calculator */
+
   .price-amt { font-size: 2.2rem; }
   .calc-card { padding: 1.5rem 1.25rem; }
   .calc-result { padding: 1.4rem 1.25rem; }
@@ -818,7 +817,7 @@ body {
   .barrier-row-fields .inp-group { width: 100%; }
   .remove-btn { align-self: flex-end !important; }
 
-  /* Problem 3 — Product */
+
   .product-header h2 { font-size: 1.4rem; padding: 0 1rem; }
   .barrier-scene { width: 100vw; }
   #product { min-height: 250vh; }
@@ -858,4 +857,9 @@ body {
   .footer-tagline { font-size: .95rem; }
   #footer { padding: 4rem 1.25rem 2.5rem; }
   .footer-top { gap: 1.5rem; }
+
+  #housePhoto {
+  background-image: url('src/images/casa_mobile.jpeg') !important;
+  background-position: center center !important;
+}
 }
