@@ -825,14 +825,14 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero-stats { gap: 1.5rem; }
   .footer-top { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; align-items: flex-start; }
+  #hero { justify-content: flex-start; padding-top: 5rem; }
+  .hero-content { padding: 0 1.25rem; padding-top: 1.5rem; }
 
-  /* Problem 2 — Calculator (extra small) */
   .price-amt { font-size: 1.85rem; letter-spacing: -.02em; }
   .hero-title { font-size: clamp(1.5rem, 7.5vw, 1.9rem); }
-  .hero-stats { bottom: 3.5rem; gap: 1rem; }
+  .hero-stats { bottom: 6.5rem; gap: 1rem; }
   .hero-stat-val { font-size: 1.2rem; }
   #calculator { padding: 5rem 1rem; }
   #benefits { padding: 5rem 1rem; }
@@ -840,7 +840,6 @@ body {
   .section-head { margin-bottom: 3rem; }
   .section-head h2 { font-size: clamp(1.5rem, 7vw, 2rem); }
 
-  /* Problem 4 — Footer */
   .footer-tagline { font-size: .95rem; }
   #footer { padding: 4rem 1.25rem 2.5rem; }
   .footer-top { gap: 1.5rem; }
