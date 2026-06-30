@@ -894,5 +894,5 @@ body.menu-open { overflow: hidden; position: fixed; width: 100%; }
   background-position: center center !important;
 }
   .cta-duo { flex-direction: row; flex-wrap: nowrap; }
-  .cta-duo .btn { flex: 1; padding: .75rem .9rem; font-size: .88rem; min-width: 0; }
+  .cta-duo .btn { flex: 1; padding: 1rem 1.2rem; font-size: 1rem; min-width: 0; }
 }
