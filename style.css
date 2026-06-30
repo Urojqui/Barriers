@@ -105,6 +105,18 @@ body.menu-open { overflow: hidden; position: fixed; width: 100%; }
 .btn-ghost:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.5); }
 
 .cta-duo { display: flex; flex-direction: row; gap: .9rem; flex-wrap: wrap; justify-content: center; align-items: center; }
+.cta-duo .btn {
+  flex: 1;
+  min-width: 140px;
+  padding: .85rem 1.4rem;
+  font-size: .97rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  white-space: nowrap;
+}
+.cta-duo .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 .btn-whatsapp {
   background: #25D366; color: #fff;
   box-shadow: 0 4px 20px rgba(37,211,102,.35);
@@ -882,5 +894,5 @@ body.menu-open { overflow: hidden; position: fixed; width: 100%; }
   background-position: center center !important;
 }
   .cta-duo { flex-direction: row; flex-wrap: nowrap; }
-  .cta-duo .btn { flex: 1; max-width: none; padding-left: .8rem; padding-right: .8rem; font-size: .88rem; }
+  .cta-duo .btn { flex: 1; padding: .75rem .9rem; font-size: .88rem; min-width: 0; }
 }
