@@ -16,6 +16,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body.menu-open { overflow: hidden; position: fixed; width: 100%; }
 
 /* ─────────────────────────────────────────
    DESIGN TOKENS
@@ -102,6 +103,28 @@ body {
   border: 1px solid rgba(255,255,255,.3);
 }
 .btn-ghost:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.5); }
+
+.cta-duo { display: flex; flex-direction: row; gap: .9rem; flex-wrap: wrap; justify-content: center; align-items: center; }
+.btn-whatsapp {
+  background: #25D366; color: #fff;
+  box-shadow: 0 4px 20px rgba(37,211,102,.35);
+  display: inline-flex; align-items: center; gap: .5rem;
+}
+.btn-whatsapp:hover { background: #1ebe57; box-shadow: 0 8px 30px rgba(37,211,102,.5); }
+.btn-whatsapp svg { width: 18px; height: 18px; fill: currentColor; }
+
+.cta-duo-label {
+  display: block;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  margin-bottom: .9rem;
+  width: 100%;
+}
+.btn-primary svg { width: 18px; height: 18px; flex-shrink: 0; }
 
 /* ─────────────────────────────────────────
    NAVIGATION
@@ -711,7 +734,7 @@ body {
   text-align: center;
   margin-bottom: 2rem;
 }
-.calc-cta { display: flex; justify-content: center; }
+.calc-cta { display: flex; flex-direction: column; align-items: center; width: 100%; }
 
 /* ─────────────────────────────────────────
    SECTION 6 · FOOTER
@@ -778,7 +801,9 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2.5rem;
-    z-index: 998;
+    z-index: 9999;
+    height: 100vh;
+    overflow-y: auto;
   }
   .nav-links.open a { font-size: 1.3rem; }
 
@@ -856,4 +881,6 @@ body {
   background-image: url('src/images/casa_mobile.jpeg') !important;
   background-position: center center !important;
 }
+  .cta-duo { flex-direction: row; flex-wrap: nowrap; }
+  .cta-duo .btn { flex: 1; max-width: none; padding-left: .8rem; padding-right: .8rem; font-size: .88rem; }
 }

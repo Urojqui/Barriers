@@ -9,11 +9,27 @@ window.addEventListener('scroll', () => {
   navbar.classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
+let _menuScrollY = 0;
+
 function toggleNav() {
-  navLinks.classList.toggle('open');
+  const isOpen = navLinks.classList.toggle('open');
+  if (isOpen) {
+    _menuScrollY = window.scrollY;
+    document.body.style.top = `-${_menuScrollY}px`;
+    document.body.classList.add('menu-open');
+  } else {
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, _menuScrollY);
+  }
 }
 function closeNav() {
-  navLinks.classList.remove('open');
+  if (navLinks.classList.contains('open')) {
+    navLinks.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    document.body.style.top = '';
+    window.scrollTo(0, _menuScrollY);
+  }
 }
 
 /* ───── BARRIER SVG BUILDER ───── */
@@ -293,6 +309,40 @@ function initAnimObservers() {
   if (cc) calcOb.observe(cc);
 }
 
+/* ───── QUOTE CTA LINKS ───── */
+function buildQuoteMessage() {
+  const rows = document.querySelectorAll('.barrier-row');
+  const valid = [];
+  rows.forEach((row, i) => {
+    const wInput = row.querySelector('.bw');
+    const hInput = row.querySelector('.bh');
+    const w = parseFloat(wInput ? wInput.value : '');
+    const h = parseFloat(hInput ? hInput.value : '');
+    if (!isNaN(w) && !isNaN(h) && w >= 50 && w <= 1000 && h >= 20 && h <= 120 && h % 20 === 0) {
+      valid.push({ num: i + 1, w, h });
+    }
+  });
+  if (valid.length === 0) {
+    return 'Hola, quiero solicitar presupuesto para barreras anti DANA. ¿Podríais informarme sobre precios y plazos?';
+  }
+  let subtotal = 0;
+  const lines = valid.map(b => {
+    subtotal += b.w * b.h * 0.024 * 1.50;
+    return `- Barrera ${b.num}: ${b.w} × ${b.h} cm`;
+  });
+  const totalFmt = (subtotal * 1.21).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  return `Hola, quiero solicitar presupuesto para estas barreras:\n${lines.join('\n')}\nTotal estimado: ${totalFmt} €\n\nQuedo a la espera de presupuesto oficial.`;
+}
+
+function updateCtaLinks() {
+  const msg = buildQuoteMessage();
+  // TODO: replace with real WhatsApp number
+  const waHref = `https://wa.me/34675323517?text=${encodeURIComponent(msg)}`;
+  const emailHref = `mailto:info@barrerasantidana.com?subject=${encodeURIComponent('Solicitud de presupuesto')}&body=${encodeURIComponent(msg)}`;
+  document.querySelectorAll('.btn-whatsapp').forEach(btn => { btn.href = waHref; });
+  document.querySelectorAll('.btn-email-cta').forEach(btn => { btn.href = emailHref; });
+}
+
 /* ───── MULTI-BARRIER CALCULATOR ───── */
 function initCalculator() {
   const rowsContainer = document.getElementById('barrierRows');
@@ -302,7 +352,6 @@ function initCalculator() {
   const rBase         = document.getElementById('rBase');
   const rIva          = document.getElementById('rIva');
   const rPrice        = document.getElementById('rPrice');
-  const cta           = document.getElementById('calcCta');
 
   let rowCount = 0;
 
@@ -384,22 +433,12 @@ function initCalculator() {
       rIva.textContent   = fmt(iva);
       rPrice.textContent = fmt(total);
 
-      const subj = encodeURIComponent(
-        `Solicitud de presupuesto – ${valid.length} barrera${valid.length > 1 ? 's' : ''}`
-      );
-      const bodyLines = valid.map(b => `• Barrera ${b.num}: ${b.w} × ${b.h} cm → ${fmt(b.withMargin)}`).join('\n');
-      const body = encodeURIComponent(
-        `Hola,\n\nMe interesan las siguientes barreras contra inundaciones:\n\n` +
-        bodyLines +
-        `\n\n• IVA (21%): ${fmt(iva)}\n• TOTAL: ${fmt(total)}\n\n` +
-        `Quedo a la espera de su respuesta.\n\nGracias.`
-      );
-      cta.href = `mailto:info@upstore2022.com?subject=${subj}&body=${body}`;
+      updateCtaLinks();
 
     } else {
       calcDivider.style.display = 'none';
       rBase.textContent = rIva.textContent = rPrice.textContent = '—';
-      cta.href = 'mailto:info@upstore2022.com?subject=Solicitud%20de%20presupuesto';
+      updateCtaLinks();
     }
   }
 
@@ -458,4 +497,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initProductScroll();
   initAnimObservers();
   initCalculator();
+  updateCtaLinks();
 });
