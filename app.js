@@ -331,7 +331,7 @@ function buildQuoteMessage() {
     return `- Barrera ${b.num}: ${b.w} × ${b.h} cm`;
   });
   const totalFmt = (subtotal * 1.21).toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-  return `Hola, quiero solicitar presupuesto para estas barreras:\n${lines.join('\n')}\nTotal estimado: ${totalFmt} €\n\nQuedo a la espera de presupuesto oficial.`;
+  return `Hola,\nQuiero solicitar presupuesto para las siguientes barreras:\n${lines.join('\n')}\nTotal estimado: ${totalFmt} €\n\n¿Podríais informarme sobre precios y plazos?\nQuedo a la espera de presupuesto oficial.\n\nUn saludo.`;
 }
 
 function updateCtaLinks() {
