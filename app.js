@@ -336,11 +336,16 @@ function buildQuoteMessage() {
 
 function updateCtaLinks() {
   const msg = buildQuoteMessage();
-  // TODO: replace with real WhatsApp number
-  const waHref = `https://wa.me/34675323517?text=${encodeURIComponent(msg)}`;
-  const emailHref = `mailto:info@barrerasantidana.com?subject=${encodeURIComponent('Solicitud de presupuesto')}&body=${encodeURIComponent(msg)}`;
-  document.querySelectorAll('.btn-whatsapp').forEach(btn => { btn.href = waHref; });
-  document.querySelectorAll('.btn-email-cta').forEach(btn => { btn.href = emailHref; });
+
+  const waLink = document.getElementById('whatsappCTA');
+  if (waLink) {
+    waLink.href = `https://wa.me/34675323517?text=${encodeURIComponent(msg)}`; // TODO: replace with real WhatsApp number
+  }
+
+  const emailLink = document.getElementById('emailCTA');
+  if (emailLink) {
+    emailLink.href = `mailto:info@upstore2022.com?subject=${encodeURIComponent('Solicitud de presupuesto')}&body=${encodeURIComponent(msg)}`;
+  }
 }
 
 /* ───── MULTI-BARRIER CALCULATOR ───── */
