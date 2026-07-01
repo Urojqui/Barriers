@@ -378,7 +378,7 @@ function initCalculator() {
   function validateHeight(input, errEl) {
     const v = parseFloat(input.value);
     if (input.value === '' || isNaN(v)) { errEl.textContent = ''; input.classList.remove('err'); return null; }
-    if (v < 20 || v > 120) { errEl.textContent = 'Entre 20 y 120 cm'; input.classList.add('err'); return null; }
+    if (v < 20 || v > 200) { errEl.textContent = 'Entre 20 y 200 cm'; input.classList.add('err'); return null; }
     if (v % 20 !== 0) { errEl.textContent = 'Múltiplo de 20 cm'; input.classList.add('err'); return null; }
     errEl.textContent = ''; input.classList.remove('err'); return v;
   }
