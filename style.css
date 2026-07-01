@@ -760,7 +760,7 @@ body.menu-open { overflow: hidden; position: fixed; width: 100%; }
 
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
   gap: 4rem;
   padding-bottom: 4rem;
   border-bottom: 1px solid rgba(255,255,255,.08);
@@ -895,4 +895,262 @@ body.menu-open { overflow: hidden; position: fixed; width: 100%; }
 }
   .cta-duo { flex-direction: row; flex-wrap: nowrap; }
   .cta-duo .btn { flex: 1; padding: .75rem 1.6rem; font-size: .88rem; min-width: 0; }
+}
+
+/* ─────────────────────────────────────────
+   PAGE HERO  (sub-page header)
+───────────────────────────────────────── */
+.page-hero {
+  background: linear-gradient(175deg, #1a1a2e 0%, #0e1628 55%, #080d1a 100%);
+  padding: 9rem 2rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(245,197,24,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(245,197,24,.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.page-hero h1 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -.035em;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.page-hero h1 .hl { color: var(--yellow); }
+.page-hero .page-hero-sub {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.65;
+  position: relative;
+}
+.page-hero .section-label { margin-bottom: 1.5rem; }
+
+/* ─────────────────────────────────────────
+   CTA BANNER  (bottom of content pages)
+───────────────────────────────────────── */
+.cta-banner {
+  background: var(--navy-deep);
+  padding: 7rem 2rem;
+  text-align: center;
+}
+.cta-banner h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -.03em;
+  margin-bottom: 1rem;
+}
+.cta-banner p {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────
+   BENEFICIOS PAGE — benefits section
+───────────────────────────────────────── */
+#beneficios-page {
+  background: var(--gray-50);
+  padding: 9rem 2rem;
+}
+.beneficios-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─────────────────────────────────────────
+   BENEFICIOS PAGE — how it works timeline
+───────────────────────────────────────── */
+#como-funciona {
+  background: var(--navy);
+  padding: 9rem 2rem;
+}
+.how-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.how-steps {
+  display: flex;
+  max-width: 880px;
+  margin: 4rem auto 0;
+  position: relative;
+  align-items: flex-start;
+}
+.how-steps::before {
+  content: '';
+  position: absolute;
+  top: 24px;
+  left: 15%;
+  right: 15%;
+  border-top: 2px dashed rgba(245,197,24,.45);
+  z-index: 0;
+}
+.how-step {
+  flex: 1;
+  text-align: center;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.how-step-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--yellow);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin: 0 auto 1.5rem;
+}
+.how-step h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: .6rem;
+}
+.how-step p {
+  font-size: .87rem;
+  color: rgba(255,255,255,.58);
+  line-height: 1.65;
+}
+
+/* ─────────────────────────────────────────
+   NOSOTROS PAGE
+───────────────────────────────────────── */
+.nosotros-section {
+  padding: 7rem 2rem;
+}
+.nosotros-section.light { background: var(--gray-50); }
+.nosotros-section.dark  { background: var(--navy); }
+.nosotros-inner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.nosotros-inner p {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  margin-bottom: 1.4rem;
+  color: var(--gray-600);
+}
+.nosotros-section.dark .nosotros-inner p { color: rgba(255,255,255,.65); }
+.nosotros-section.dark .section-head h2  { color: #fff; }
+.nosotros-section.dark .section-head p   { color: rgba(255,255,255,.55); }
+
+.nosotros-inner ul {
+  list-style: none;
+  margin-bottom: 1.4rem;
+}
+.nosotros-inner ul li {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--gray-600);
+  padding-left: 1.8rem;
+  position: relative;
+  margin-bottom: .55rem;
+}
+.nosotros-inner ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: .65em;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+.nosotros-section.dark .nosotros-inner ul li { color: rgba(255,255,255,.65); }
+
+.trust-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.4rem;
+  margin-top: 3rem;
+}
+.trust-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 2.1rem;
+  border: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+  transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+}
+.trust-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(245,197,24,.3);
+}
+.trust-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: .5rem; }
+.trust-card p  { font-size: .88rem; color: var(--gray-600); line-height: 1.65; }
+
+/* ─────────────────────────────────────────
+   LEGAL PAGES
+───────────────────────────────────────── */
+.legal-content-header {
+  text-align: center;
+  padding: 7rem 1rem 3rem;
+  background: var(--navy);
+  color: #fff;
+}
+.legal-content-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -.03em;
+  margin-bottom: .75rem;
+}
+.legal-content-header p { color: var(--text-muted); font-size: 1rem; }
+.legal-content {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 8rem 2rem 6rem;
+  color: var(--gray-700, #374151);
+}
+.legal-content h1 { font-size: 2.2rem; color: var(--navy); margin-bottom: .5rem; }
+.legal-content h2 {
+  font-size: 1.2rem;
+  color: var(--navy);
+  margin-top: 2.5rem;
+  margin-bottom: .75rem;
+  border-bottom: 2px solid var(--yellow);
+  padding-bottom: .4rem;
+  display: inline-block;
+}
+.legal-content p, .legal-content li { font-size: 1rem; line-height: 1.75; margin-bottom: 1rem; }
+.legal-content ul { padding-left: 1.5rem; }
+.legal-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: .9rem; }
+.legal-content th { background: var(--navy); color: #fff; padding: .6rem 1rem; text-align: left; }
+.legal-content td { padding: .6rem 1rem; border-bottom: 1px solid #e5e7eb; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE — new page components
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .how-steps {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+  .how-steps::before { display: none; }
+  .how-step { max-width: 380px; width: 100%; }
+  .trust-cards { grid-template-columns: 1fr; }
+  .page-hero { padding: 7rem 1.5rem 4rem; }
+  .cta-banner { padding: 5rem 1.5rem; }
+  #beneficios-page { padding: 5rem 1rem; }
+  #como-funciona { padding: 5rem 1rem; }
+  .nosotros-section { padding: 5rem 1rem; }
+  .legal-content { padding: 4rem 1.25rem 4rem; }
 }

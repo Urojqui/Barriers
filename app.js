@@ -36,6 +36,7 @@ function closeNav() {
 function buildBarrierSVG() {
   const NS   = 'http://www.w3.org/2000/svg';
   const wrap = document.getElementById('barrierSvgWrap');
+  if (!wrap) return;
 
   const VW     = 500, VH = 320;
   const RAIL_W = 22;
@@ -176,6 +177,7 @@ function mkLG(ns, id, dir, stops) {
 /* Build progress dots */
 function buildDots() {
   const container = document.getElementById('asmDots');
+  if (!container) return;
   const N = 7;
   for (let i = 0; i < N; i++) {
     const d = document.createElement('div');
@@ -236,6 +238,7 @@ function updateBarrier(progress) {
 
 function initProductScroll() {
   const section = document.getElementById('product');
+  if (!section) return;
   let active = false;
 
   const io = new IntersectionObserver(entries => {
@@ -344,13 +347,14 @@ function updateCtaLinks() {
 
   const emailLink = document.getElementById('emailCTA');
   if (emailLink) {
-    emailLink.href = `mailto:info@upstore2022.com?subject=${encodeURIComponent('Solicitud de presupuesto')}&body=${encodeURIComponent(msg)}`;
+    emailLink.href = `mailto:info@barrerasantidana.com?subject=${encodeURIComponent('Solicitud de presupuesto')}&body=${encodeURIComponent(msg)}`;
   }
 }
 
 /* ───── MULTI-BARRIER CALCULATOR ───── */
 function initCalculator() {
   const rowsContainer = document.getElementById('barrierRows');
+  if (!rowsContainer) return;
   const addBtn        = document.getElementById('addBarrierBtn');
   const summariesEl   = document.getElementById('barrierSummaries');
   const calcDivider   = document.getElementById('calcDivider');

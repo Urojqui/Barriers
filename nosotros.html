@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre Nosotros — Barreras Anti DANA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════════ -->
+    <nav id="navbar">
+      <a href="index.html" class="nav-logo">Barreras Anti <span>DANA</span></a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" onclick="closeNav()">Inicio</a></li>
+        <li><a href="index.html#product" onclick="closeNav()">Producto</a></li>
+        <li><a href="beneficios.html" onclick="closeNav()">Beneficios</a></li>
+        <li><a href="nosotros.html" onclick="closeNav()">Sobre nosotros</a></li>
+        <li>
+          <a href="index.html#calculator" onclick="closeNav()">Presupuesto</a>
+        </li>
+        <li>
+          <a href="index.html#footer" onclick="closeNav()" class="nav-cta"
+            >Contacto</a
+          >
+        </li>
+      </ul>
+
+      <button
+        class="nav-burger"
+        id="navBurger"
+        aria-label="Menú"
+        onclick="toggleNav()"
+      >
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+     PAGE HERO
+══════════════════════════════════════════ -->
+    <header class="page-hero">
+      <span class="section-label">La empresa</span>
+      <h1>Sobre <span class="hl">nosotros</span></h1>
+      <p class="page-hero-sub">Comprometidos con tu protección</p>
+    </header>
+
+    <!-- ══════════════════════════════════════════
+     QUIÉNES SOMOS
+══════════════════════════════════════════ -->
+    <section class="nosotros-section light">
+      <div class="nosotros-inner">
+        <div
+          class="section-head anim"
+          style="text-align: left; margin-bottom: 2.5rem"
+        >
+          <span class="section-label" style="color: var(--navy)"
+            >Quiénes somos</span
+          >
+          <h2
+            style="
+              font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+              font-weight: 800;
+              color: var(--navy);
+              letter-spacing: -0.03em;
+              margin-bottom: 0.9rem;
+            "
+          >
+            Una empresa nacida para proteger lo que más importa
+          </h2>
+        </div>
+
+        <p>
+          Somos dos empresarios valencianos nacidos en Algemesí con amplia experiencia
+          en fabricación e importación de productos industriales. Cuando la DANA
+          de 2024 arrasó nuestra tierra buscamos una solución real, accesible y
+          duradera para que lo que nos pasó a nosotros no le vuelva a pasar a
+          nadie más.
+        </p>
+        <p>
+          Así nació Barreras Anti DANA: un sistema de barreras modulares en
+          aluminio diseñado para que cualquier persona pueda proteger su hogar, comercio o nave industrial
+          en cuestión de minutos. Fabricación propia y atención directa.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     NUESTRA MISIÓN
+══════════════════════════════════════════ -->
+    <section class="nosotros-section dark">
+      <div class="nosotros-inner">
+        <div
+          class="section-head anim"
+          style="text-align: left; margin-bottom: 2.5rem"
+        >
+          <span class="section-label">Nuestra misión</span>
+          <h2
+            style="
+              font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+              font-weight: 800;
+              color: #fff;
+              letter-spacing: -0.03em;
+              margin-bottom: 0.9rem;
+            "
+          >
+            Protección accesible para todos
+          </h2>
+        </div>
+
+        <!-- EDITAR: misión -->
+        <p>
+          Creemos que la protección frente a las inundaciones no debería ser un
+          privilegio para personas con un poder adquisitivo alto. Nuestra
+          misión es llevar soluciones de calidad profesional a cualquier
+          particular o negocio que lo necesite, con un proceso de compra
+          sencillo, un asesoramiento personalizado y una fabricación bajo
+          demanda que garantiza el ajuste perfecto a cada situación.
+        </p>
+        <ul>
+          <li>
+            Fabricar barreras de máxima calidad con materiales duraderos.
+          </li>
+          <li>
+            Hacer la protección contra inundaciones accesible y rápida de instalar.
+          </li>
+          <li>
+            Acompañar a cada cliente desde la medición hasta la instalación y
+            más allá.
+          </li>
+        </ul>
+        <!-- /EDITAR -->
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     POR QUÉ CONFIAR EN NOSOTROS
+══════════════════════════════════════════ -->
+    <section class="nosotros-section light">
+      <div class="nosotros-inner" style="max-width: 1100px">
+        <div class="section-head anim" style="margin-bottom: 1rem">
+          <span class="section-label" style="color: var(--navy)"
+            >Garantías</span
+          >
+          <h2
+            style="
+              font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+              font-weight: 800;
+              color: var(--navy);
+              letter-spacing: -0.03em;
+              margin-bottom: 0.9rem;
+            "
+          >
+            Por qué confiar en nosotros
+          </h2>
+        </div>
+
+        <div class="trust-cards">
+          <!-- EDITAR: tarjeta fabricación propia -->
+          <div class="trust-card">
+            <span class="b-icon">🏭</span>
+            <h3>Fabricación propia</h3>
+            <p>
+              Diseñamos y fabricamos cada barrera en nuestras instalaciones, con
+              control de calidad en cada fase del proceso. Sin intermediarios,
+              sin sorpresas. Tu pedido se fabrica específicamente para las medidas que necesites.
+            </p>
+          </div>
+          <!-- /EDITAR -->
+
+          <!-- EDITAR: tarjeta atención personalizada -->
+          <div class="trust-card">
+            <span class="b-icon">🤝</span>
+            <h3>Atención personalizada</h3>
+            <p>
+              Un técnico especialista revisa tu caso antes de confirmar
+              cualquier pedido. Te asesoramos sobre el tipo de montaje, el
+              número de planchas necesario y la altura óptima para tu nivel de
+              riesgo real.
+            </p>
+          </div>
+          <!-- /EDITAR -->
+
+          <!-- EDITAR: tarjeta entrega en toda España -->
+          <div class="trust-card">
+            <span class="b-icon">📦</span>
+            <h3>Entrega en toda España</h3>
+            <p>
+              Enviamos a cualquier punto de la Península. Consulta
+              disponibilidad para Baleares, Canarias, Ceuta y Melilla.
+            </p>
+          </div>
+          <!-- /EDITAR -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     CTA BANNER
+══════════════════════════════════════════ -->
+    <section class="cta-banner">
+      <h2>¿Listo para proteger tu inmueble?</h2>
+      <p>Calcula tu presupuesto en segundos o contacta con nosotros.</p>
+      <a href="index.html#calculator" class="btn btn-primary"
+        >Calcular presupuesto →</a
+      >
+    </section>
+
+    <!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+    <footer id="footer">
+      <div class="footer-inner">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <div class="footer-logo">Barreras Anti <span>DANA</span></div>
+            <p>
+              Fabricantes de barreras contra inundaciones de aluminio.
+              Soluciones a medida para hogares y empresas en toda España y
+              Europa.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h4>Producto</h4>
+            <ul>
+              <li><a href="beneficios.html">Beneficios</a></li>
+              <li><a href="beneficios.html#como-funciona">Cómo funciona</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Empresa</h4>
+            <ul>
+              <li><a href="nosotros.html">Sobre nosotros</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="cookies.html">Política de cookies</a></li>
+              <li><a href="aviso-legal.html">Aviso legal</a></li>
+              <li><a href="privacidad.html">Política de privacidad</a></li>
+              <li><a href="envios.html">Política de envíos</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul>
+              <li>
+                <a href="mailto:info@barrerasantidana.com">info@barrerasantidana.com</a>
+              </li>
+              <li><a href="tel:+34675323517">+34 675 323 517</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-tagline">
+            Protección cuando <em>más la necesitas.</em>
+          </div>
+          <div class="footer-copy">
+            © 2026 Barreras Anti DANA. Todos los derechos reservados.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
